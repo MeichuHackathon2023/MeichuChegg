@@ -1,26 +1,34 @@
 <script setup>
-import { navigateTo } from "nuxt/app";
 import { definePageMeta } from "#imports";
 
 definePageMeta({
-  middleware: ["register"],
+  middleware: ["login"],
 });
 
 const form = ref({
-  name: "",
-  email: "",
-  password: "",
-  password_confirmation: "",
+  email: "user@example.com",
+  password: "password",
 });
 
 const auth = useAuthStore();
 
-const handleRegister = async () => {
-  const { error } = await auth.register(form.value);
+const handleLogin = async () => {
+  await auth.logout();
+  const { error } = await auth.login(form.value);
 
-  if (!error) {
-    navigateTo("/");
+  if (auth.isLoggedIn) {
+    navigateTo("/", { replace: true });
+  } else {
+    alert("wrong id or password");
   }
+
+  console.log("data", auth.user);
+  console.log("error", error);
+};
+
+const handleLogout = async () => {
+  await auth.logout();
+  navigateTo("/login");
 };
 </script>
 
@@ -43,25 +51,9 @@ const handleRegister = async () => {
           <h1
             class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white"
           >
-            Create an account
+            Switch to another account
           </h1>
           <form class="space-y-4 md:space-y-6" action="#">
-            <div>
-              <label
-                for="email"
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >Your Name</label
-              >
-              <input
-                type="text"
-                name="name"
-                id="name"
-                class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                placeholder="name"
-                required=""
-                v-model="form.name"
-              />
-            </div>
             <div>
               <label
                 for="email"
@@ -94,28 +86,38 @@ const handleRegister = async () => {
                 v-model="form.password"
               />
             </div>
-            <div>
-              <label
-                for="password"
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >Password Confirmation</label
+            <div class="flex items-center justify-between">
+              <div class="flex items-start"></div>
+              <a
+                href="#"
+                class="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500"
+                >Forgot password?</a
               >
-              <input
-                type="password"
-                name="password"
-                id="password"
-                placeholder="••••••••"
-                class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                required=""
-                v-model="form.password_confirmation"
-              />
             </div>
-            <button
-              @click.stop.prevent="handleRegister"
-              class="w-full text-white bg-black hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
-            >
-              Sign up
-            </button>
+            <div class="flex justify-between">
+              <button
+                @click.stop.prevent="handleLogin"
+                class="basis-[40%] text-white bg-black hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+              >
+                Sign in
+              </button>
+              <button
+                v-if="auth.isLoggedIn"
+                @click.stop.prevent="handleLogout"
+                class="basis-[40%] text-white bg-black hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+              >
+                Sign out
+              </button>
+            </div>
+
+            <p class="text-sm font-light text-gray-500 dark:text-gray-400">
+              Create an account:
+              <NuxtLink
+                href="/register"
+                class="font-medium text-primary-600 hover:underline dark:text-primary-500"
+                >Sign up</NuxtLink
+              >
+            </p>
           </form>
         </div>
       </div>

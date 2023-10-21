@@ -26,7 +26,7 @@ export const useAuthStore = defineStore("auth", () => {
   async function logout() {
     await useApiFetch("/logout", { method: "POST" });
     user.value = null;
-    navigateTo("/login");
+    // navigateTo("/login");
   }
 
   async function fetchUser() {
@@ -45,6 +45,7 @@ export const useAuthStore = defineStore("auth", () => {
 
     const { data } = await useApiFetch("/api/user");
     user.value = data.value as User;
+    console.log("login is fired", user.value);
 
     await fetchUser();
 
@@ -52,16 +53,22 @@ export const useAuthStore = defineStore("auth", () => {
   }
 
   async function register(info: RegistrationInfo) {
-    await useApiFetch("/sanctum/csrf-cookie");
+    try {
+      await useApiFetch("/sanctum/csrf-cookie");
 
-    const registerResult = await useApiFetch("/register", {
-      method: "POST",
-      body: info,
-    });
+      const registerResult = await useApiFetch("/register", {
+        method: "POST",
+        body: info,
+      });
 
-    await fetchUser();
+      await fetchUser();
+      navigateTo("/");
 
-    return registerResult;
+      return { registerResult };
+    } catch (error) {
+      console.error("registration failed:", error);
+      throw error;
+    }
   }
 
   return { user, login, isLoggedIn, fetchUser, logout, register };

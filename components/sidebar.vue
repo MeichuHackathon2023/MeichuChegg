@@ -136,6 +136,7 @@ const emits = defineEmits(["closeSideBar"]);
 
 const closeSideBar = () => {
   emits("closeSideBar");
+  console.log("closeSideBar");
 };
 </script>
 
