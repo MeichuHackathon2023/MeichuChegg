@@ -4,7 +4,7 @@ export default defineNuxtRouteMiddleware((to, from) => {
   const auth = useAuthStore();
 
   if (!auth.isLoggedIn) {
-    console.log("not logged in yet");
+    alert("login to access playlist page");
     return navigateTo("/login", { replace: true });
   }
 });

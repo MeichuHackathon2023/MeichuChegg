@@ -1,7 +1,7 @@
 <script setup>
 const auth = useAuthStore();
 const user = auth.user;
-const user_id = ref(0);
+const user_id = ref(-1);
 const showSidebar = ref(true);
 const emits = defineEmits(["toggleSideBar", "togglePerson"]);
 
@@ -14,7 +14,9 @@ const togglePerson = () => {
 };
 
 onMounted(() => {
-  user_id.value = user.id;
+  if (auth.isLoggedIn) {
+    if (user.id) user_id.value = user.id;
+  }
 });
 </script>
 
@@ -47,8 +49,8 @@ onMounted(() => {
       <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
       <div>
         <div>
-          <button
-            type="button"
+          <NuxtLink
+            to="/search"
             class="relative flex"
             id="search-button"
             aria-expanded="false"
@@ -56,13 +58,13 @@ onMounted(() => {
           >
             <span class="absolute -inset-1.5"></span>
             <img class="h-8 w-8" src="/search.svg" alt="" />
-          </button>
+          </NuxtLink>
         </div>
       </div>
       <div>
         <div>
           <NuxtLink
-            type="button"
+            to="/addPage"
             class="relative flex"
             id="upload-button"
             aria-expanded="false"

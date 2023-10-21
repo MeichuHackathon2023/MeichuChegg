@@ -1,7 +1,7 @@
 <script lang="ts" setup></script>
 
 <template>
-  <div>Page: foo</div>
+  <div>FlashCard</div>
 </template>
 
 <style scoped></style>

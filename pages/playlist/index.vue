@@ -22,6 +22,11 @@
 </template>
 
 <script setup>
+import { definePageMeta } from "#imports";
+
+definePageMeta({
+  middleware: ["playlist"],
+});
 const list = [
   {
     id: 0,

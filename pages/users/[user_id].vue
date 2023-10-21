@@ -23,7 +23,11 @@
 </template>
 
 <script setup>
-import { onMounted } from "vue";
+import { definePageMeta } from "#imports";
+
+definePageMeta({
+  middleware: ["user"],
+});
 
 const auth = useAuthStore();
 
@@ -31,10 +35,6 @@ const user = auth.user;
 const name = ref("");
 // const email = user.email;
 const { user_id } = useRoute().params;
-
-const test = () => {
-  console.log(user);
-};
 
 onMounted(() => {
   name.value = user.name;
