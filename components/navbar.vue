@@ -1,4 +1,11 @@
-<script lang="ts" setup></script>
+<script setup>
+const showSidebar = ref(true);
+const emits = defineEmits(["toggleSideBar"]);
+
+const toggleSidebar = () => {
+  emits("toggleSideBar");
+};
+</script>
 
 <template>
   <nav class="bg-gray-500 w-screen">
@@ -8,6 +15,7 @@
         class="relative inline-flex items-center justify-center rounded-md p-2 bg-gray-700 text-white"
         aria-controls="mobile-menu"
         aria-expanded="false"
+        @click="toggleSidebar"
       >
         <svg
           class="block h-6 w-6"
@@ -24,6 +32,7 @@
           />
         </svg>
       </button>
+
       <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
       <div>
         <div>

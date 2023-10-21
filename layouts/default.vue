@@ -1,15 +1,21 @@
-<script lang="ts" setup>
+<script setup>
 import { useAuthStore } from "../stores/useAuthStore";
 
 const auth = useAuthStore();
+const showSideBar = ref(false);
 
 async function handleLogout() {
   await auth.logout();
 }
+
+function toggleSideBar() {
+  showSideBar.value = !showSideBar.value;
+}
 </script>
 
 <template>
-  <navbar class="fixed bottom-0"></navbar>
+  <sidebar :showSideBar="showSideBar" @closeSideBar="toggleSideBar"></sidebar>
+  <navbar @toggleSideBar="toggleSideBar" class="fixed bottom-0"></navbar>
   <div>
     <button v-if="auth.isLoggedIn" @click="handleLogout">Logout</button>
 
