@@ -31,9 +31,6 @@ const user = auth.user;
 const name = ref("");
 // const email = user.email;
 const { user_id } = useRoute().params;
-definePageMeta({
-  layout: "users",
-});
 
 const test = () => {
   console.log(user);

@@ -1,9 +1,10 @@
 <template>
   <div class="flex flex-col space-y-4 w-screen">
     <div class="p-3 border-b border-gray-500" v-for="x in list" :key="x.id">
-      <div class="p-1 flex justify-between">
+      <div class="px-1 pb-2 flex justify-between">
         <h1 class="text-2xl">Playlist {{ x.id }}</h1>
         <button
+          @click="toggleVideos(x.id)"
           class="p-1 text-sm rounded-full border border-gray-500 hover:border-spacing-2"
         >
           View all
@@ -23,7 +24,7 @@
 <script setup>
 const list = [
   {
-    id: 1,
+    id: 0,
     url: [
       "https://www.youtube.com/embed/UBoxs1dM9Lc?si=JoUnp2l72X5t7jrG",
       "https://www.youtube.com/embed/UBoxs1dM9Lc?si=JoUnp2l72X5t7jrG",
@@ -32,18 +33,22 @@ const list = [
     ],
   },
   {
-    id: 2,
+    id: 1,
     url: ["https://www.youtube.com/embed/oGiz5SVQyhE?si=Z2v_8YWoehcdiDZ5"],
   },
   {
-    id: 3,
+    id: 2,
     url: ["https://www.youtube.com/embed/f4V7J-LYG_c?si=SNI5BghvkP95jJba"],
   },
   {
-    id: 4,
+    id: 3,
     url: ["https://www.youtube.com/embed/5Eg5xvAoooM?si=C6vEkVTKwXFFrghb"],
   },
 ];
+
+const toggleVideos = (id) => {
+  navigateTo("/playlist/" + id);
+};
 </script>
 
 <style lang="scss" scoped></style>
