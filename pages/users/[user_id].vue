@@ -2,13 +2,13 @@
   <div class="p-3">
     <div class="flex justify-around">
       <div class="basis-[40%] p-2">
-        <img src="/person.svg" alt="" />
+        <img src="/person.jpg" alt="" />
       </div>
       <div class="flex flex-col justify-center">
         <!-- <h2 class="text-3xl">{{ user.name }}</h2> -->
         <p>user_id: {{ user_id }}</p>
         <p>Name: {{ name }}</p>
-        <p>Grade: {{ grade }}</p>
+        <!-- <p>Grade: {{ grade }}</p> -->
       </div>
     </div>
     <div class="mt-10 pt-2 border-t border-gray-600 dark:border-gray-900">

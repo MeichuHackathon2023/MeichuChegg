@@ -102,7 +102,7 @@ onMounted(() => {
             aria-expanded="false"
             aria-haspopup="true"
           >
-            <img class="h-8 w-8 rounded-full" src="/person.svg" alt="" />
+            <img class="h-8 w-8 rounded-full" src="/person.jpg" alt="" />
           </button>
         </div>
       </div>

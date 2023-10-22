@@ -25,6 +25,10 @@ const toggleAddPlayList = () => {
   showAddPlayList.value = !showAddPlayList.value;
 };
 
+const closePlayPop = () => {
+  showAddPlayList.value = false;
+};
+
 onMounted(() => {
   window.addEventListener("message", (event) => {
     if (event.data.command === "ping") {
@@ -43,17 +47,29 @@ onMounted(() => {
       ref="section1"
       class="snap-always snap-center basis-full shrink-0 relative"
     >
-      <playpopup v-if="showAddPlayList" class="z-15" />
+      <playpopup
+        v-if="showAddPlayList"
+        @closePlayPop="closePlayPop"
+        class="z-15"
+      />
       <div
         class="absolute space-y-4 right-2 top-[35vh] p-2 z-20 bg-white rounded-2xl"
       >
-        <div @click="likeVideo">
+        <div
+          class="cursor-pointer focus:outline-none hover:ring-2 rounded-full"
+          @click="likeVideo"
+        >
           <img class="w-5 h-5" src="/heart.svg" alt="" />
         </div>
-        <div @click="toggleAddPlayList">
+        <div
+          class="cursor-pointer focus:outline-none hover:ring-2"
+          @click="toggleAddPlayList"
+        >
           <img class="w-5 h-5" src="/addplaylist.svg" alt="" />
         </div>
-        <div>
+        <div
+          class="cursor-pointer focus:outline-none hover:ring-2 rounded-full"
+        >
           <img class="w-5 h-5" src="/dialog.svg" alt="" />
         </div>
       </div>

@@ -21,7 +21,12 @@
           </div>
         </li>
         <div class="w-full flex justify-center mt-3">
-          <button class="bg-black rounded-lg px-3 py-1 text-white">Add</button>
+          <button
+            class="bg-black rounded-lg px-3 py-1 text-white"
+            @click="close"
+          >
+            Add
+          </button>
         </div>
       </ul>
     </div>
@@ -29,11 +34,11 @@
 </template>
 
 <script setup>
-const props = defineProps({
-  showAddPlayList: {
-    type: Boolean,
-  },
-});
+const emits = defineEmits(["closePlayPop"]);
+
+const close = () => {
+  emits("closePlayPop");
+};
 
 const playlists = ["A", "B", "C"];
 const checkedPlaylists = ref([]);
