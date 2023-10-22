@@ -7,12 +7,13 @@ definePageMeta({
 
 const auth = useAuthStore();
 const form = ref({
-  email: "user@example.com",
-  password: "password",
+  email: "970379@gmail.com",
+  password: "57658054",
 });
 
 const handleLogin = async () => {
-  const { error } = await auth.login(form.value);
+  const user = await auth.login(form.value);
+  console.log("at login page", user);
 
   if (auth.isLoggedIn) {
     navigateTo("/", { replace: true });
@@ -20,8 +21,9 @@ const handleLogin = async () => {
     alert("wrong password");
   }
 
-  console.log("data", auth.user);
-  console.log("error", error);
+  // console.log("data", loginResult);
+  // console.log("error", error);
+  // console.log("data", auth.user);
 };
 </script>
 
@@ -87,6 +89,7 @@ const handleLogin = async () => {
               <div class="flex items-start"></div>
               <a
                 href="#"
+                @button="console.log()"
                 class="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500"
                 >Forgot password?</a
               >

@@ -29,6 +29,12 @@
 </template>
 
 <script setup>
+const props = defineProps({
+  showAddPlayList: {
+    type: Boolean,
+  },
+});
+
 const playlists = ["A", "B", "C"];
 const checkedPlaylists = ref([]);
 </script>

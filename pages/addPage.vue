@@ -3,7 +3,7 @@ import { navigateTo } from "nuxt/app";
 import { definePageMeta } from "#imports";
 
 definePageMeta({
-  middleware: ["addpage"],
+  middleware: ["addPage"],
 });
 
 const form = ref({

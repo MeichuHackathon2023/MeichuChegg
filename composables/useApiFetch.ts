@@ -6,25 +6,26 @@ export function useApiFetch<T>(
 ) {
   let headers: any = {};
 
-  const token = useCookie("XSRF-TOKEN");
+  const auth = useAuthStore();
 
-  if (token.value) {
-    headers["X-XSRF-TOKEN"] = token.value as string;
+  let token;
+  if (process.client) {
+    token = localStorage.getItem("token");
   }
+  console.log("useApiFetch", token);
 
   if (process.server) {
     headers = {
       ...headers,
-      ...useRequestHeaders(["referer", "cookie"]),
     };
   }
-
-  return useFetch("http://localhost:8000" + path, {
-    credentials: "include",
+  console.log("before useFetch", "http://192.168.149.213:8080" + path);
+  return useFetch("http://192.168.149.213:8080" + path, {
     watch: false,
     ...options,
 
     headers: {
+      Authorization: "Bearer " + token,
       ...headers,
       ...options?.headers,
     },

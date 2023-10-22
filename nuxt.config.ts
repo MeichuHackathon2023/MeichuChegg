@@ -8,6 +8,14 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
+  nitro: {
+    devProxy: {
+      "/api/auth": {
+        target: "http://192.168.149.213:8080",
+        changeOrigin: true,
+      },
+    },
+  },
   modules: [
     // ...
     "@pinia/nuxt",

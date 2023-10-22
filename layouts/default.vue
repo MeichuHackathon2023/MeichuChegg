@@ -14,7 +14,7 @@ function toggleSideBar() {
 }
 
 onMounted(() => {
-  console.log(auth.isLoggedIn, auth.user);
+  // console.log(auth.isLoggedIn, auth.user);
 });
 </script>
 

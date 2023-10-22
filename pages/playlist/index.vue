@@ -2,7 +2,7 @@
   <div class="flex flex-col space-y-4 w-screen">
     <div class="p-3 border-b border-gray-500" v-for="x in list" :key="x.id">
       <div class="px-1 pb-2 flex justify-between">
-        <h1 class="text-2xl">Playlist {{ x.id }}</h1>
+        <h1 class="text-2xl">Playlist {{ x.name }}</h1>
         <button
           @click="toggleVideos(x.id)"
           class="p-1 text-sm rounded-full border border-gray-500 hover:border-spacing-2"
@@ -30,30 +30,50 @@ definePageMeta({
 const list = [
   {
     id: 0,
+    name: "103 學測數學",
     url: [
-      "https://www.youtube.com/embed/UBoxs1dM9Lc?si=JoUnp2l72X5t7jrG",
-      "https://www.youtube.com/embed/UBoxs1dM9Lc?si=JoUnp2l72X5t7jrG",
-      "https://www.youtube.com/embed/UBoxs1dM9Lc?si=JoUnp2l72X5t7jrG",
-      "https://www.youtube.com/embed/UBoxs1dM9Lc?si=JoUnp2l72X5t7jrG",
+      "https://showroom.one-stage.kkstream.io/embed?token=eyJhbGciOiJSUzI1NiIsImtpZCI6IjE3N2RhODVjLTllZjgtNTVjYS05M2FkLTAyYTMyZjkwZjg2MyIsInR5cCI6IkpXVCJ9.eyJyZXNvdXJjZV9pZCI6IjliNmEyZDQzLTFhOWYtNGI2My04YWJmLWU2ZTFmZjFjMTkxZCIsInJlc291cmNlX3R5cGUiOiJSRVNPVVJDRV9UWVBFX1ZPRF9FVkVOVCJ9.SOn4m5s0l0q6YdEqEn0nUcmmlXdTk6KedClGaYwnslDVdP1yaJOzmKaG_V3v16TqzI7MO0fCZXUrzPzpCOzsABULDNlT-TebvHjQN4YiIdOhHfiZz2ZEIPfOThoT1aqn4nYS7tv6S0HUxbx8nEk_DcncYCJJiIPO714qPEYyIqygr9dQyQZS8eGS1OpGK2Y6OTFBK0J8uJ1RcV9k_DHcpTKGHvuFR4I7Ute7FfhPaXdndiJsWvYzuICJ0AU1N3jGHnuy5FAeAHMM_3gXuLkWcphCePDojfPQSLdiEhbaCeCNOd6Hv09TrRA0Mkpe8GWpsEpNEO4UxDYkQmlSH3NPB7HZMhIdlJSFVHCJOc3Y_V9Y2GqWDLkv26uN7UOwilXCv-ztIwB1E7gxJMqyiYLY7qJM7Hv9zSGYDhnsdN5E21Xrqlql0APDCD3gdypEtpVzj3yb6perpFD78AA0UVLtRThYvk-aIZbfclRFcRTEwMgOmas3LrKWwT0yvbXlfgEBWURyjf_y43mjS1JSp45bx6KXlwp4fGXgxeNHzbGGZXjgwf39W7p1sf0CKMe3Ogwk5M-4aDirJ-sXYJXbyYcHl24dt3jZKnwJ-G1E_cFvp7gliIlMsIyP3bUz92bvqoV9eHWk-HaVLZSq2j2IPCIrPInqAkPThK6HK_ra9mYsdks",
+      "https://showroom.one-stage.kkstream.io/embed?token=eyJhbGciOiJSUzI1NiIsImtpZCI6IjE3N2RhODVjLTllZjgtNTVjYS05M2FkLTAyYTMyZjkwZjg2MyIsInR5cCI6IkpXVCJ9.eyJyZXNvdXJjZV9pZCI6IjUwMzNhOWEwLTI3MjYtNDliNi05MWRiLTQ4ZDU3ZDY2NGM1NiIsInJlc291cmNlX3R5cGUiOiJSRVNPVVJDRV9UWVBFX1ZPRF9FVkVOVCJ9.qf8y9zpqWLQsDPVJDkLsWey32h5eGgKk8bjkYnZbnm9DjqGoHmqvYFBW6NadhChOc-_pe3Dro-fZA5MoApR-CvIfIBiebn3IO3Ojh0voZDAQ56oC7xUI13yOhD2zp_2eZpX-QeiN_Osb5vNrn0KeW6FeZgo-PAcrqGi4f5HUmQVKVY1EPtrhoxcCfp_rQ4zm7-hVLa9WS-VDRmJBNz5M5-QrCtK7hyRPepWon7pD7LIwHYmLRBrJfSYvq78Fg4QpjG-_-32PprS5r8NVMlYgBHgOA69GInDZNZrKcNeoDWezw9clnBES1-McQ3KdXmRi_5m1f93bvbIOzoTODQhtUBrGLqRoNs29rnoq5X8aAg9DM_isXMMIpCDx9ScaF6YEbap3BilH1oLZHacIGf9HRfKGeO0n5jHH7QcxGgRABq6DEOV-Ddec9xC-vq5islZYarAz0KQEYrmnB0zEU3d_lgLfyqmK_-sCJzl7aIeh6izcuXR9bIVcWo3FtVjePoT7MnXg5eaBTVhmI5mFSvPfoOUOhO2vc2cTadYnDewkKExLUMaAHFEz3aueAIQZBLNgqQooXR_YXPS1ka7cS5Hwn5LOriRcXuWUM_a_kach-u2B1Vhr3d23QKAxHrOz0Jlbv92xbWXePo--peNnMnjV9ATO9C286BhaCDJ8KHG1CRI",
+      "https://showroom.one-stage.kkstream.io/embed?token=eyJhbGciOiJSUzI1NiIsImtpZCI6IjE3N2RhODVjLTllZjgtNTVjYS05M2FkLTAyYTMyZjkwZjg2MyIsInR5cCI6IkpXVCJ9.eyJyZXNvdXJjZV9pZCI6IjhhNDJiYmE0LTI0YjYtNDY3Mi05NzQwLTA3NWJiZDlmOTNjZiIsInJlc291cmNlX3R5cGUiOiJSRVNPVVJDRV9UWVBFX1ZPRF9FVkVOVCJ9.dCv4yGJxNPqE0-mzG91BmIcnfgjnv-Nw95kVAgaMekFT8PByBA6TbJ8bej7Qczf7R37xVhuY-R9FzRO7fo4pPhf-AdF86c-x6H_0Gwzd8R2DQCCatXP0aQydwVkYp_cJzeI2kN9vrDktF7TbRt6TuOzJGa4C2ygxMSfvBc2G_gGw-SKj5ZKZvtbwUusvum2l9NgSLAMb5LGnEye4-l18qxqt4auHypR615NzqfKjwfnw8od7ZWiOWDRaNE8ZQLH4cE5cZYcxwLPhHlPjRA07pIFbSIJsSb68gk9-K9TtGBcnmtWN0rF474tFSBcSsSITSa1APfg1Wub4ko9a2MxkkhtLgHOZ5UWaWA-9nAUojIH3oiOuZQhge_LGB06jj_9ufJ9QcEgCwEbl1bV3PFcNaz7oy-qacNBZzJHxzceqb8Rrt44U8pJbYvVANy76mu5cMeeRFzFPG2htE4L6pR4g9VweLGMA7gmrJKG_DhWEjmZzBzhJEp8JuQdTsPSq9_glx7IgAUCstjEV51ciX4NNxAZVtZaK0dWfjC_kv-9wJ56sPQ01XLI3miO26JjjWElXp2N_nzA_MoOBWmeC62JUix4ZaQmc8tpZ3ZsQAIhV8TMlThgajTMKiaKh47vXTydNw9KXI8VcG5aRV5gGVyUYdWDx28vjKTBTir11xptfP24",
     ],
   },
   {
     id: 1,
-    url: ["https://www.youtube.com/embed/oGiz5SVQyhE?si=Z2v_8YWoehcdiDZ5"],
+    name: "104 學測數學",
+    url: [
+      "https://showroom.one-stage.kkstream.io/embed?token=eyJhbGciOiJSUzI1NiIsImtpZCI6IjE3N2RhODVjLTllZjgtNTVjYS05M2FkLTAyYTMyZjkwZjg2MyIsInR5cCI6IkpXVCJ9.eyJyZXNvdXJjZV9pZCI6IjRlMzcyMzFiLWZjZGYtNDliZi04ZmZiLTZjZmRhMDYyYjMyNyIsInJlc291cmNlX3R5cGUiOiJSRVNPVVJDRV9UWVBFX1ZPRF9FVkVOVCJ9.cEqJSyGe-p8fG8ztId55-_RaEE0FEM-GNlPO-y5844_3SFIsaQkcC3YEfJONTINZb1gVpjVdGhIxauk3VgNhtgmpqd4TFlsJhf3_JuHcSj_MmOPrlpkEl0HzvoTLgrYtHJxo5PdSqRqqxLEH1Poe5Hz5qHySwHdmlneb8VQiHxuJoeQPQEfWuMY8bB2hy2gTO58e8iCdbxTMBR09qa6JvFnWcBHGkv6Rso-FYdHzTHshVn5SDP02B1q5ptOVyKBCQXtNPWdwm-pK6AF4CfAD2e-lkg8JGWqZwlP_qEx-WF2II4y__FluGZdP657lOn3XW85txEAOKZKn9h0oGMPGNL9FVS0QQOI1UmIH0zdGswd11KUmmkC1ZKPvn3TMsyp_ZN6cwa8vfR8GwRI05AlCLUcd4DgDKPGXdFh6is9xSqqafceKFhlYkSEAyu79fz7P9TrZqN0gjJHdTYPoMsljxyVbbKfU1Vdu1aCkYmEd_WD-UnMAw3pBSpoWS3k1mHgY_uMpRO2EdHXbYqaXujYd6em4vpfKdy-Z2mlVyT_BwkXecjfQk2pf18pQhRxtnQNVLYLCq7asMbUyF3TrX22jGzGQTnTWJc4Cf8ZOwBfYSdZnwjUvTk1xGCd1tH7V3R7QP0coOTUbrFjr_v69BZm9cJz1LDTv-Esx5NfjT8NxXXw",
+      "https://showroom.one-stage.kkstream.io/embed?token=eyJhbGciOiJSUzI1NiIsImtpZCI6IjE3N2RhODVjLTllZjgtNTVjYS05M2FkLTAyYTMyZjkwZjg2MyIsInR5cCI6IkpXVCJ9.eyJyZXNvdXJjZV9pZCI6ImQ3ZDRhZWNlLTdjYzEtNGU0OS05Y2NlLWE5OTU2MWRkY2Q0ZCIsInJlc291cmNlX3R5cGUiOiJSRVNPVVJDRV9UWVBFX1ZPRF9FVkVOVCJ9.dq7vp7EOL7CxNhmwYsZfyQ78Nlku2YgrBPH4_GOoXGwcI9Pxx26-hyswKRAtgfsmJzDkwYDwfe0ueV7uLP3rrAd2bXLuKmFkhpdELSBCjNtPi-PaUDwXhecEv1xyXkmg0A5L7xvTHar1zC4bm5rVxXmn3kebwdZABKg9L2CQSObI2oy8T63JOPARzHRvTXYiySq_o0h9HnAmDXWbEcyQ-LHhXKih0U1PGWrAmNwSC4dPrQYWD2VsFHFxVFOXCTSfIqR4OwOTHp9gonzRoJWlBmHWiIthKlBvq1mTY1EuIgvK6VkyHze0mhBuq3C9QvxpNzriAaehxYzUA8geu76lqBs_psCNwTwfovWMa1c5I0yCWYc3zeQGsKAYu0a6fkhcC9R19-KSbi20fAtlY1oNysmGDt4KQq9iw_hTLAACGdW9ROc83NfhH-25_48HMdoqM4S4KIi2U9mG9b3KtS9zSIJGcB4XmpbE7UAMw7O1L-7B0dFNWq_jSYuuiepw3dMs_On4VklK1Ld7dBmEPuD77hM9bLE1FYcOVYJgfDA2e6BMaCD1-Emrz-Un0UFM74ygBJ0Nvo7cyVoftDU_jKQEbA8dD72Alhjh0vAbKTKYTqlMqLxD-gpVOJUhB_SIfqtpHeD9oUiDwv4MGUZMufeLxy2DElVSQrsn4b7JUH5IHN4",
+    ],
   },
   {
     id: 2,
-    url: ["https://www.youtube.com/embed/f4V7J-LYG_c?si=SNI5BghvkP95jJba"],
+    name: "105 學測數學",
+    url: [
+      "https://showroom.one-stage.kkstream.io/embed?token=eyJhbGciOiJSUzI1NiIsImtpZCI6IjE3N2RhODVjLTllZjgtNTVjYS05M2FkLTAyYTMyZjkwZjg2MyIsInR5cCI6IkpXVCJ9.eyJyZXNvdXJjZV9pZCI6IjUwMzQ1MzRiLTFjN2MtNGJkMC1hZDA2LTY2NDUwMDhkZmZhNSIsInJlc291cmNlX3R5cGUiOiJSRVNPVVJDRV9UWVBFX1ZPRF9FVkVOVCJ9.bAvprTVoD1s3_AQIfcRZAxc_NyjiwubIchJpRgqj3GAzcDK3Sjbx5EIHV9lEulm-QB7iw-sMAbnYbd6DOZ8_Kbb7poNwULO84yk8XztnBqbiQbT1JwVVZMMvllZpEx-SVsA0XzsW4YYchOcoeMeCAPXiYgv5IMpsbVzCS9Od8yBxWqAG6jeiK14b09i0YpNL-ZKcvkZjJdFU8DXRkomygu6IHFx2b6r9Y-Y3j2wWwT5exww03frLy_z6DlfFHQUE41ZOrcwOM6Y5Gi2y6MvQ2cDQZ4MUAUHEkuv1mSh7fcoRqdJIkndEmHBBtba0iVBMXrg1XDQYLh3-hwNubrZCUGTjyIviuGL-dCZ0wUQ1ACGjuDX7R-zhGyAXBNZiFYXbrBA_xWpRzxkXTxdrQ4lHHE9aN77PSfUadc6D4Hqmvx_WLb9BGuHTXLwEsppeJsNgTncYEZUBMZuVRpx5jMFBvUT4g5epVDcCTU2JGtqkiprlWU1QLrTUmZ7979T75q-h_37yKUdpFl876xWQ8Rj74E5Kefl8mXaDgC-p6uzi9aOGpg22UOvKW4wrILq-MsnZWJNLGjGz44NSxzwIeCfXKbKNpbEyJ0oBb1uiq5yPDvn51HV1rRoBdzOJbsfwvdGc5ZGRAb_TdUQQ0wo0q_Wvx1Te3BnpPsF23IyVZUBvLHs",
+    ],
   },
   {
     id: 3,
-    url: ["https://www.youtube.com/embed/5Eg5xvAoooM?si=C6vEkVTKwXFFrghb"],
+    name: "106 學測數學",
+    url: [
+      "https://showroom.one-stage.kkstream.io/embed?token=eyJhbGciOiJSUzI1NiIsImtpZCI6IjE3N2RhODVjLTllZjgtNTVjYS05M2FkLTAyYTMyZjkwZjg2MyIsInR5cCI6IkpXVCJ9.eyJyZXNvdXJjZV9pZCI6IjQwMzgxNTE3LWRlM2MtNGYyZi1hNzEzLTNmY2ZmNjM0MmZkYyIsInJlc291cmNlX3R5cGUiOiJSRVNPVVJDRV9UWVBFX1ZPRF9FVkVOVCJ9.JyGPXk4EcIVLmkklDNDgYMNa6VfUSATXD0m1a-qPFcpbaetcXUus5YtSKoSQdCHBN5xJI81AJbRtD1TOnZ7avatuKJ4wUVN_33yNO_D7Fa8echJbE1gXrHE5GhfOJdVL4FOyBUYpx0-9puSItmxKdL2J5cWBs62iAVavOMx6VVnh7P__i5OY_1TaWfN4kW9IJ3EOe_PSnh--dzuL_jWWvr726i0tir1MiNN_BOaop348DfmJYoJsu14HSnTcacHMyatIGwtnYl9Zy77rHieruuzTU54PeGNV86VY4tdFVOM5S7hF93PSu456YwHMVets96-xz4z_BAYJBb0H17sDwGDP3wNxUAo2nbAeMMMqcAcg2GA7kctupmRYEB6Cxp5jpX0tawGlJ4rpnTlzz9fi4NW5MvzXQpyZfjhylYDn7LvP2BsysDinGNQBLWFFYqrta8exjlse3PVHSi1-970kyeh66_S7io1wcX9XHrnhVXR8MWu8D6__qH8bSUarMqPNkAlNbBQZexT3zOeDHv3BixP8TstqcGeUHtVrT92RiOVNcQ5SPcWVNM2vv6ETuyRETilcN0sZnXMMCa_UriSl2dEAhzT3SEAFIjv3MR1muASgMjgKxVtMScnJoHDbKQeh3vKKbgKXX_g_CdEhZQBVz8itkae0L1f2R4l0rSOACUY",
+    ],
   },
 ];
 
 const toggleVideos = (id) => {
   navigateTo("/playlist/" + id);
 };
+
+onMounted(() => {
+  window.addEventListener("message", (event) => {
+    if (event.data.command === "ping") {
+      Array.from(document.querySelectorAll("iframe")).forEach((iframe) =>
+        iframe?.contentWindow?.postMessage({ command: "pong" }, "*")
+      );
+    }
+  });
+});
 </script>
 
 <style lang="scss" scoped></style>
